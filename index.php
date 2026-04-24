@@ -483,6 +483,20 @@ if (isset($_GET['msg'])) {
 }
 .team-links a:hover { background:rgba(91,63,248,.3); border-color:rgba(91,63,248,.5); color:#a78bfa; transform:translateY(-3px); }
 
+/* ── TEAM SECTION — LIGHT MODE OVERRIDES ── */
+[data-theme="light"] .team-section { background: linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%); }
+[data-theme="light"] .team-card { background: linear-gradient(160deg,#ffffff 0%,#f0ebff 100%); }
+[data-theme="light"] .team-photo-area::after { background: linear-gradient(to bottom,transparent,#f0ebff); }
+[data-theme="light"] .team-photo-area { background: linear-gradient(180deg,rgba(91,63,248,.1) 0%,rgba(91,63,248,.03) 100%); }
+[data-theme="light"] .team-card-num { color:rgba(91,63,248,.07); }
+[data-theme="light"] .team-header h2 { color:#2D1B69; }
+[data-theme="light"] .team-header p { color:rgba(76,29,149,.65); }
+[data-theme="light"] .team-name { color:#2D1B69; }
+[data-theme="light"] .team-desc { color:rgba(76,29,149,.7); }
+[data-theme="light"] .team-links a { background:rgba(91,63,248,.08); border-color:rgba(91,63,248,.2); color:#6D28D9; }
+[data-theme="light"] .team-links a:hover { background:rgba(91,63,248,.2); color:#5B3FD4; }
+[data-theme="light"] .team-card-wrap { background:linear-gradient(135deg,rgba(91,63,248,.45),rgba(167,139,250,.28),rgba(91,63,248,.45)); }
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
     .cat-grid { grid-template-columns:1fr 1fr; }
@@ -615,7 +629,67 @@ if (isset($_GET['msg'])) {
             </div>
         </div>
     </div>
-    <img class="hero-char-img" src="assets/images/hero_shopper.png" alt="VELORA Shopping Character" loading="eager">
+    <div class="hero-char-img" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" fill="none" style="width:100%;height:100%;">
+        <defs>
+          <radialGradient id="bg1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#a78bfa" stop-opacity=".18"/><stop offset="100%" stop-color="#5b3fd4" stop-opacity="0"/></radialGradient>
+          <radialGradient id="headG" cx="40%" cy="35%"><stop offset="0%" stop-color="#c4b5fd"/><stop offset="100%" stop-color="#7c3aed"/></radialGradient>
+          <radialGradient id="bodyG" cx="35%" cy="30%"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#5b21b6"/></radialGradient>
+          <radialGradient id="faceG" cx="40%" cy="35%"><stop offset="0%" stop-color="#f5f3ff"/><stop offset="100%" stop-color="#ede9fe"/></radialGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- ambient glow -->
+        <ellipse cx="150" cy="200" rx="140" ry="140" fill="url(#bg1)"/>
+        <!-- shadow -->
+        <ellipse cx="150" cy="392" rx="52" ry="8" fill="rgba(91,63,248,.13)"/>
+        <!-- feet -->
+        <ellipse cx="122" cy="358" rx="22" ry="13" fill="#6d28d9"/><ellipse cx="122" cy="354" rx="20" ry="12" fill="#7c3aed"/>
+        <ellipse cx="178" cy="358" rx="22" ry="13" fill="#6d28d9"/><ellipse cx="178" cy="354" rx="20" ry="12" fill="#7c3aed"/>
+        <!-- body -->
+        <ellipse cx="150" cy="268" rx="72" ry="86" fill="url(#bodyG)"/>
+        <ellipse cx="146" cy="255" rx="58" ry="68" fill="rgba(196,181,253,.22)"/>
+        <!-- neck -->
+        <ellipse cx="150" cy="185" rx="28" ry="16" fill="#7c3aed"/>
+        <!-- head (helmet-style) -->
+        <circle cx="150" cy="118" r="78" fill="url(#headG)"/>
+        <circle cx="150" cy="118" r="70" fill="#f0ebff"/>
+        <!-- face visor -->
+        <ellipse cx="150" cy="122" rx="50" ry="46" fill="url(#faceG)"/>
+        <!-- blush -->
+        <ellipse cx="110" cy="138" rx="14" ry="9" fill="rgba(236,72,153,.2)"/>
+        <ellipse cx="190" cy="138" rx="14" ry="9" fill="rgba(236,72,153,.2)"/>
+        <!-- eyes -->
+        <ellipse cx="130" cy="112" rx="12" ry="14" fill="#3b0764"/>
+        <ellipse cx="170" cy="112" rx="12" ry="14" fill="#3b0764"/>
+        <!-- eye shine -->
+        <circle cx="134" cy="107" r="4" fill="white"/>
+        <circle cx="174" cy="107" r="4" fill="white"/>
+        <circle cx="128" cy="116" r="2" fill="rgba(255,255,255,.6)"/>
+        <circle cx="168" cy="116" r="2" fill="rgba(255,255,255,.6)"/>
+        <!-- smile -->
+        <path d="M120 142 Q150 162 180 142" stroke="#3b0764" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        <!-- left arm -->
+        <path d="M84 248 Q62 222 68 200" stroke="#7c3aed" stroke-width="20" stroke-linecap="round" fill="none"/>
+        <circle cx="68" cy="193" r="15" fill="#a78bfa"/>
+        <!-- right arm -->
+        <path d="M216 248 Q234 218 228 196" stroke="#7c3aed" stroke-width="20" stroke-linecap="round" fill="none"/>
+        <circle cx="228" cy="188" r="15" fill="#a78bfa"/>
+        <!-- shopping bag -->
+        <rect x="230" y="146" width="58" height="68" rx="10" fill="#7c3aed"/>
+        <rect x="235" y="151" width="48" height="58" rx="8" fill="#c4b5fd"/>
+        <path d="M244 146 C244 130 274 130 274 146" stroke="#5b21b6" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <!-- bag label -->
+        <rect x="246" y="168" width="26" height="18" rx="4" fill="rgba(91,63,248,.35)"/>
+        <text x="259" y="181" text-anchor="middle" font-size="11" fill="white" font-weight="bold">V</text>
+        <!-- star decorations -->
+        <path d="M44 95 L46 102 L53 104 L46 106 L44 113 L42 106 L35 104 L42 102 Z" fill="#c4b5fd" opacity=".75" filter="url(#glow)"/>
+        <path d="M256 58 L258 63 L263 65 L258 67 L256 72 L254 67 L249 65 L254 63 Z" fill="#ddd6fe" opacity=".7"/>
+        <path d="M22 175 L23.5 179 L28 181 L23.5 183 L22 187 L20.5 183 L16 181 L20.5 179 Z" fill="#a78bfa" opacity=".6"/>
+        <circle cx="270" cy="290" r="4" fill="#c4b5fd" opacity=".5"/>
+        <circle cx="40" cy="310" r="3" fill="#ddd6fe" opacity=".5"/>
+        <circle cx="275" cy="170" r="3" fill="#a78bfa" opacity=".55"/>
+      </svg>
+    </div>
 </section>
 
 <!-- STATS BAR -->
