@@ -313,84 +313,180 @@ if (isset($_GET['msg'])) {
 .journal-cat { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
 .journal-title { font-size: 1rem; font-weight: 600; color: var(--text-main); line-height: 1.4; }
 
-/* ── TEAM SECTION ── */
-.team-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+/* ── GLOBAL ANIMATIONS ── */
+@keyframes floatA { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(35px,-25px) scale(1.07)} }
+@keyframes floatB { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-25px,20px) scale(0.93)} }
+@keyframes ringPulse { 0%,100%{transform:scale(1);opacity:.45} 50%{transform:scale(1.14);opacity:.85} }
+@keyframes glowPulse { 0%,100%{box-shadow:0 0 22px rgba(91,63,248,.3),0 0 0 6px rgba(91,63,248,.08)} 50%{box-shadow:0 0 44px rgba(91,63,248,.55),0 0 0 10px rgba(91,63,248,.16)} }
+@keyframes shimmerBorder { 0%{background-position:0% 50%} 100%{background-position:300% 50%} }
+@keyframes scrollProgress { from{width:0} to{width:100%} }
+
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-prog {
+    position: fixed; top:0; left:0; height:3px; z-index:10000;
+    background: linear-gradient(90deg, var(--primary), #a78bfa, var(--primary));
+    background-size: 200% 100%;
+    border-radius: 0 2px 2px 0;
+    width: 0%; pointer-events: none;
+    animation: shimmerBorder 3s linear infinite;
+    transition: width .05s linear;
+}
+
+/* ── HERO ANIMATED ORBS ── */
+.hero-orb {
+    position: absolute; border-radius: 50%; filter: blur(70px);
+    pointer-events: none; z-index: 0;
+}
+.hero-orb-a {
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(91,63,248,.2), transparent 70%);
+    top: -120px; right: -80px;
+    animation: floatA 11s ease-in-out infinite;
+}
+.hero-orb-b {
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(167,139,250,.14), transparent 70%);
+    bottom: 40px; left: -60px;
+    animation: floatB 14s ease-in-out infinite;
+}
+
+/* ── TEAM SECTION — PREMIUM DARK ── */
+.team-section {
+    background: #09081a;
+    position: relative; overflow: hidden;
+    padding: 96px 0 112px;
+}
+.team-blob {
+    position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none;
+}
+.team-blob-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(91,63,248,.12), transparent 70%);
+    top: -200px; right: -200px; animation: floatA 13s ease-in-out infinite;
+}
+.team-blob-2 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(167,139,250,.09), transparent 70%);
+    bottom: -150px; left: -100px; animation: floatB 11s ease-in-out infinite;
+}
+.team-header { text-align:center; margin-bottom:64px; position:relative; z-index:1; }
+.team-header .section-eyebrow { color:#a78bfa; }
+.team-header .section-eyebrow::before { background:#a78bfa; }
+.team-header h2 { color:#fff; font-size:clamp(2rem,5vw,3rem); margin-bottom:16px; }
+.team-header p { color:rgba(255,255,255,.5); max-width:480px; margin:0 auto; line-height:1.75; }
+
 .team-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
+    gap: 20px;
+    position: relative; z-index: 1;
+}
+
+/* Animated gradient border via wrapper */
+.team-card-wrap {
+    background: linear-gradient(135deg, rgba(91,63,248,.55), rgba(167,139,250,.35), rgba(91,63,248,.55));
+    background-size: 300% 300%;
+    border-radius: 26px; padding: 1.5px;
+    animation: shimmerBorder 4s linear infinite;
+    transition: transform .4s cubic-bezier(.2,0,.1,1), box-shadow .4s;
+}
+.team-card-wrap:hover {
+    transform: translateY(-14px) scale(1.02);
+    box-shadow: 0 32px 80px rgba(91,63,248,.28), 0 0 60px rgba(91,63,248,.15);
 }
 .team-card {
-    text-align: center;
-    padding: 40px 24px 32px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+    background: linear-gradient(160deg, #151228 0%, #0e0c1e 100%);
+    border-radius: 25px; overflow: hidden;
+    position: relative; display: flex; flex-direction: column;
+    height: 100%;
+}
+/* Number watermark */
+.team-card-num {
+    position: absolute; top:14px; right:20px;
+    font-family:'DM Serif Display',serif; font-size:4rem; line-height:1;
+    color:rgba(255,255,255,.04); pointer-events:none; user-select:none;
+}
+/* Photo area */
+.team-photo-area {
+    background: linear-gradient(180deg, rgba(91,63,248,.18) 0%, rgba(91,63,248,.04) 100%);
+    padding: 36px 0 30px;
+    display: flex; justify-content: center; align-items: center;
     position: relative;
-    overflow: hidden;
 }
-.team-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary), #a78bfa);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform .4s var(--ease);
-    border-radius: 3px 3px 0 0;
+.team-photo-area::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:48px;
+    background: linear-gradient(to bottom, transparent, #0e0c1e);
 }
-.team-card:hover::before { transform: scaleX(1); }
-.team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+/* Pulsing rings */
+.t-ring {
+    position: absolute; border-radius: 50%; animation: ringPulse 3s ease-in-out infinite;
+}
+.t-ring-1 { width:140px; height:140px; border:1.5px solid rgba(91,63,248,.4);  animation-delay:0s;   }
+.t-ring-2 { width:172px; height:172px; border:1px solid rgba(167,139,250,.2);   animation-delay:.8s;  }
+.t-ring-3 { width:206px; height:206px; border:1px solid rgba(91,63,248,.09);    animation-delay:1.6s; }
+/* Avatar */
 .team-avatar {
-    width: 110px; height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 20px;
-    border: 3px solid var(--border);
-    transition: border-color .3s, box-shadow .3s;
-    display: block;
+    width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
+    border: 3px solid rgba(91,63,248,.7);
+    display: block; position: relative; z-index: 2;
+    animation: glowPulse 4s ease-in-out infinite;
+    transition: transform .4s;
 }
-.team-card:hover .team-avatar { border-color: var(--primary); box-shadow: 0 0 0 6px var(--primary-glow); }
-.team-name { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--text-main); margin-bottom: 8px; }
+.team-card-wrap:hover .team-avatar { transform: scale(1.07); }
+/* Card body */
+.team-card-body {
+    padding: 20px 22px 28px; flex: 1;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.team-name { font-family:'DM Serif Display',serif; font-size:1.3rem; color:#fff; margin-bottom:10px; letter-spacing:-.2px; }
 .team-role {
-    display: inline-block;
-    background: var(--primary-light);
-    color: var(--primary);
-    font-size: 10px; font-weight: 700;
-    letter-spacing: .12em; text-transform: uppercase;
-    padding: 4px 12px; border-radius: var(--radius-full);
-    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(91,63,248,.2); border: 1px solid rgba(91,63,248,.35);
+    color: #a78bfa; font-size:10px; font-weight:700;
+    letter-spacing:.12em; text-transform:uppercase;
+    padding:5px 14px; border-radius:100px; margin-bottom:16px;
 }
-.team-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+.team-role::before { content:'◈'; font-size:8px; }
+.team-desc { font-size:13px; color:rgba(255,255,255,.45); line-height:1.7; flex:1; margin-bottom:20px; }
+.team-links { display:flex; gap:8px; justify-content:center; }
+.team-links a {
+    width:32px; height:32px; border-radius:50%;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+    display:flex; align-items:center; justify-content:center;
+    color:rgba(255,255,255,.4); font-size:.85rem; transition:all .25s;
+}
+.team-links a:hover { background:rgba(91,63,248,.3); border-color:rgba(91,63,248,.5); color:#a78bfa; transform:translateY(-3px); }
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-    .cat-grid { grid-template-columns: 1fr 1fr; }
-    .cat-card:first-child { grid-row: auto; }
-    .featured-grid, .potw-wrap { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: repeat(2,1fr); }
-    .journal-grid { grid-template-columns: 1fr 1fr; }
-    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-grid { grid-template-columns:1fr 1fr; }
+    .cat-card:first-child { grid-row:auto; }
+    .featured-grid,.potw-wrap { grid-template-columns:1fr; }
+    .stats-grid { grid-template-columns:repeat(2,1fr); }
+    .journal-grid { grid-template-columns:1fr 1fr; }
+    .team-grid { grid-template-columns:repeat(2,1fr); }
+    .potw-wrap { padding:36px 28px; }
 }
 @media(max-width:640px){
-    .cat-grid { grid-template-columns: 1fr; }
-    .hero-cta-row { flex-direction: column; align-items: flex-start; }
-    .journal-grid { grid-template-columns: 1fr; }
-    .potw-wrap { padding: 28px 20px; }
-    .hero-search { flex-wrap: wrap; gap: 8px; padding: 10px 14px; }
-    .hero-search input { min-width: 0; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-grid { grid-template-columns:1fr; }
+    .hero-cta-row { flex-direction:column; align-items:flex-start; }
+    .journal-grid { grid-template-columns:1fr; }
+    .potw-wrap { padding:24px 18px; gap:32px; }
+    .hero-search { flex-wrap:wrap; gap:8px; padding:10px 14px; }
+    .hero-search input { min-width:0; }
+    .stats-grid { grid-template-columns:repeat(2,1fr); }
+    .featured-title { font-size:2rem; }
 }
 @media(max-width:480px){
-    .team-grid { grid-template-columns: 1fr; }
-    .featured-title { font-size: 2rem; }
-    .potw-title { font-size: 1.8rem; }
+    .team-grid { grid-template-columns:1fr; gap:14px; }
+    .potw-title { font-size:1.8rem; }
+    .hero-orb-a,.hero-orb-b { display:none; }
 }
+
 </style>
 </head>
 <body>
+<div class="scroll-prog" id="scrollProg"></div>
 
 <!-- NAVBAR -->
 <nav class="nx-navbar" id="navbar">
@@ -435,6 +531,8 @@ if (isset($_GET['msg'])) {
 <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-a"></div>
+    <div class="hero-orb hero-orb-b"></div>
     <div class="nx-container">
         <div class="hero-inner">
             <div class="hero-tag reveal"><i class="bi bi-stars"></i> VELORA Vol. 01 — Now Live</div>
@@ -623,38 +721,105 @@ if (isset($_GET['msg'])) {
 </section>
 
 <!-- TEAM -->
-<section class="nx-section team-section" id="team">
+<section class="team-section" id="team">
+    <div class="team-blob team-blob-1"></div>
+    <div class="team-blob team-blob-2"></div>
     <div class="nx-container">
-        <div style="text-align:center;margin-bottom:56px;">
+        <div class="team-header">
             <div class="section-eyebrow reveal">The Builders</div>
-            <h2 class="reveal delay-1" style="font-size:clamp(2rem,4vw,2.8rem);margin-bottom:16px;">Meet the minds behind <em style="color:var(--primary);font-style:italic;">VELORA</em></h2>
-            <p class="reveal delay-2" style="font-size:1rem;color:var(--text-muted);max-width:500px;margin:0 auto;line-height:1.75;">A passionate team of student creators who designed and built VELORA as a premium curated marketplace experience.</p>
+            <h2 class="reveal delay-1">Meet the minds behind <em style="font-style:italic;">VELORA</em></h2>
+            <p class="reveal delay-2">A passionate team of student creators who designed and built VELORA as a premium curated marketplace experience.</p>
         </div>
         <div class="team-grid">
-            <div class="team-card reveal">
-                <img class="team-avatar" src="assets/css/image/tom.jpeg" alt="Tom" loading="lazy">
-                <div class="team-name">Tom</div>
-                <div class="team-role">Landing Page</div>
-                <div class="team-desc">Designed and built the VELORA landing experience — from the hero section to the journal.</div>
+
+            <div class="team-card-wrap reveal">
+                <div class="team-card">
+                    <div class="team-card-num">01</div>
+                    <div class="team-photo-area">
+                        <div class="t-ring t-ring-1"></div>
+                        <div class="t-ring t-ring-2"></div>
+                        <div class="t-ring t-ring-3"></div>
+                        <img class="team-avatar" src="assets/css/image/tom.jpeg" alt="Tom" loading="lazy">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">Tom</div>
+                        <div class="team-role">Landing Page</div>
+                        <div class="team-desc">Designed and built the VELORA landing experience — from the hero section all the way to the journal.</div>
+                        <div class="team-links">
+                            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
+                            <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="team-card reveal delay-1">
-                <img class="team-avatar" src="assets/css/image/felysia.jpeg" alt="Felysia" loading="lazy">
-                <div class="team-name">Felysia</div>
-                <div class="team-role">Authentication</div>
-                <div class="team-desc">Crafted the sign in and register flows with secure PHP session handling.</div>
+
+            <div class="team-card-wrap reveal delay-1">
+                <div class="team-card">
+                    <div class="team-card-num">02</div>
+                    <div class="team-photo-area">
+                        <div class="t-ring t-ring-1"></div>
+                        <div class="t-ring t-ring-2"></div>
+                        <div class="t-ring t-ring-3"></div>
+                        <img class="team-avatar" src="assets/css/image/felysia.jpeg" alt="Felysia" loading="lazy">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">Felysia</div>
+                        <div class="team-role">Authentication</div>
+                        <div class="team-desc">Crafted the sign in and register flows with secure PHP session handling and validation.</div>
+                        <div class="team-links">
+                            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
+                            <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="team-card reveal delay-2">
-                <img class="team-avatar" src="assets/css/image/jodi.jpeg" alt="Jodi" loading="lazy">
-                <div class="team-name">Jodi</div>
-                <div class="team-role">Store & Checkout</div>
-                <div class="team-desc">Built the shopping cart and checkout with a seamless payment experience.</div>
+
+            <div class="team-card-wrap reveal delay-2">
+                <div class="team-card">
+                    <div class="team-card-num">03</div>
+                    <div class="team-photo-area">
+                        <div class="t-ring t-ring-1"></div>
+                        <div class="t-ring t-ring-2"></div>
+                        <div class="t-ring t-ring-3"></div>
+                        <img class="team-avatar" src="assets/css/image/jodi.jpeg" alt="Jodi" loading="lazy">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">Jodi</div>
+                        <div class="team-role">Store &amp; Checkout</div>
+                        <div class="team-desc">Built the shopping cart and checkout with a seamless and intuitive payment experience.</div>
+                        <div class="team-links">
+                            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
+                            <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="team-card reveal delay-3">
-                <img class="team-avatar" src="assets/css/image/bagus.jpeg" alt="Bagus" loading="lazy">
-                <div class="team-name">Bagus</div>
-                <div class="team-role">Design & Vision</div>
-                <div class="team-desc">Shaped the overall design vision and ensured a premium user experience throughout.</div>
+
+            <div class="team-card-wrap reveal delay-3">
+                <div class="team-card">
+                    <div class="team-card-num">04</div>
+                    <div class="team-photo-area">
+                        <div class="t-ring t-ring-1"></div>
+                        <div class="t-ring t-ring-2"></div>
+                        <div class="t-ring t-ring-3"></div>
+                        <img class="team-avatar" src="assets/css/image/bagus.jpeg" alt="Bagus" loading="lazy">
+                    </div>
+                    <div class="team-card-body">
+                        <div class="team-name">Bagus</div>
+                        <div class="team-role">Design &amp; Vision</div>
+                        <div class="team-desc">Shaped the overall design vision and ensured a premium user experience throughout VELORA.</div>
+                        <div class="team-links">
+                            <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
+                            <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -712,6 +877,18 @@ if (isset($_GET['msg'])) {
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script>
+// Scroll progress bar
+(function(){
+    var prog = document.getElementById('scrollProg');
+    if(!prog) return;
+    window.addEventListener('scroll', function(){
+        var s = document.documentElement.scrollTop || document.body.scrollTop;
+        var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        prog.style.width = (h > 0 ? (s/h*100) : 0) + '%';
+    }, {passive:true});
+})();
+</script>
 <?php if ($flash_msg): ?>
 <script>
 document.addEventListener('DOMContentLoaded', function() {

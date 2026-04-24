@@ -499,20 +499,57 @@ button,input,select,textarea { font-family: 'DM Sans', sans-serif; }
 }
 
 /* ══════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — COMPREHENSIVE
 ══════════════════════════════ */
+
+/* ── Tablet (≤1024px) ── */
 @media (max-width: 1024px) {
     .nx-nav-links { display: none; }
     .nx-hamburger { display: flex; }
     .nx-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
 }
+
+/* ── Small tablet / large phone (≤768px) ── */
+@media (max-width: 768px) {
+    .nx-section { padding: 72px 0; }
+    .nx-footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .row { grid-template-columns: 1fr; }
+    .row.three-col { grid-template-columns: 1fr; }
+    .row.suggest-row { grid-template-columns: 1fr 1fr; }
+    .col-12 { grid-column: auto; }
+    .d-md-flex { display: none; }
+}
+
+/* ── Phone (≤640px) ── */
 @media (max-width: 640px) {
+    /* Navbar */
     .nx-navbar { padding: 0 1.25rem; }
-    .nx-section { padding: 64px 0; }
+    .nx-nav-actions .btn-outline,
+    .nx-nav-actions .btn-primary { display: none; }
+
+    /* Sections */
+    .nx-section { padding: 56px 0; }
     .nx-container { padding: 0 1.25rem; }
+
+    /* Footer */
     .nx-footer-grid { grid-template-columns: 1fr; gap: 24px; }
     .nx-footer-bottom { flex-direction: column; text-align: center; }
+    .nx-footer { padding: 48px 0 28px; }
+    .nx-footer-newsletter { flex-direction: column; }
+    .nx-footer-newsletter input,
+    .nx-footer-newsletter button { width: 100%; }
+
+    /* Buttons touch-friendly */
+    .btn-primary, .btn-outline, .btn-ghost { padding: 12px 22px; min-height: 44px; }
 }
+
+/* ── Small phone (≤480px) ── */
+@media (max-width: 480px) {
+    .nx-section { padding: 48px 0; }
+    .nx-toast-wrap { bottom: 16px; right: 16px; left: 16px; }
+    .nx-toast { max-width: 100%; }
+}
+
 
 /* ══════════════════════════════
    BOOTSTRAP COMPAT HELPERS
