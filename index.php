@@ -5,6 +5,14 @@
  */
 session_start();
 
+// ── Logout handler (replaces broken logout.php) ──
+if (isset($_GET['logout'])) {
+    session_unset();
+    session_destroy();
+    header('Location: index.php?msg=logout');
+    exit;
+}
+
 // ── Page config ──
 $page_title   = 'VELORA — The Curated Marketplace';
 $page_desc    = 'VELORA is a premium curated marketplace for unique products and expert services.';
@@ -305,17 +313,80 @@ if (isset($_GET['msg'])) {
 .journal-cat { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
 .journal-title { font-size: 1rem; font-weight: 600; color: var(--text-main); line-height: 1.4; }
 
+/* ── TEAM SECTION ── */
+.team-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+.team-card {
+    text-align: center;
+    padding: 40px 24px 32px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+    position: relative;
+    overflow: hidden;
+}
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), #a78bfa);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s var(--ease);
+    border-radius: 3px 3px 0 0;
+}
+.team-card:hover::before { transform: scaleX(1); }
+.team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
+.team-avatar {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    border: 3px solid var(--border);
+    transition: border-color .3s, box-shadow .3s;
+    display: block;
+}
+.team-card:hover .team-avatar { border-color: var(--primary); box-shadow: 0 0 0 6px var(--primary-glow); }
+.team-name { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--text-main); margin-bottom: 8px; }
+.team-role {
+    display: inline-block;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: var(--radius-full);
+    margin-bottom: 14px;
+}
+.team-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
     .cat-grid { grid-template-columns: 1fr 1fr; }
     .cat-card:first-child { grid-row: auto; }
     .featured-grid, .potw-wrap { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: repeat(2,1fr); }
-    .journal-grid { grid-template-columns: 1fr; }
+    .journal-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media(max-width:640px){
     .cat-grid { grid-template-columns: 1fr; }
     .hero-cta-row { flex-direction: column; align-items: flex-start; }
+    .journal-grid { grid-template-columns: 1fr; }
+    .potw-wrap { padding: 28px 20px; }
+    .hero-search { flex-wrap: wrap; gap: 8px; padding: 10px 14px; }
+    .hero-search input { min-width: 0; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width:480px){
+    .team-grid { grid-template-columns: 1fr; }
+    .featured-title { font-size: 2rem; }
+    .potw-title { font-size: 1.8rem; }
 }
 </style>
 </head>
@@ -329,6 +400,7 @@ if (isset($_GET['msg'])) {
         <li><a href="#categories">Categories</a></li>
         <li><a href="#featured">Featured</a></li>
         <li><a href="#journal">Journal</a></li>
+        <li><a href="#team">Team</a></li>
         <li><a href="#about">About</a></li>
     </ul>
     <div class="nx-nav-actions">
@@ -339,7 +411,7 @@ if (isset($_GET['msg'])) {
                 <i class="bi bi-person-circle" style="color:var(--primary);"></i>
                 <?= $user_name ?>
             </span>
-            <a href="auth/logout.php" class="btn-outline" style="padding:8px 20px;font-size:13px;">Sign Out</a>
+            <a href="index.php?logout=1" class="btn-outline" style="padding:8px 20px;font-size:13px;">Sign Out</a>
         <?php else: ?>
             <a href="auth/login.php" class="btn-outline" style="padding:8px 20px;font-size:13px;">Sign In</a>
             <a href="auth/signUp.php" class="btn-primary" style="padding:8px 20px;font-size:13px;">Get Started</a>
@@ -545,6 +617,43 @@ if (isset($_GET['msg'])) {
                     <div class="journal-cat">Wellness</div>
                     <div class="journal-title">Designing for Mental Clarity: A New Approach</div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM -->
+<section class="nx-section team-section" id="team">
+    <div class="nx-container">
+        <div style="text-align:center;margin-bottom:56px;">
+            <div class="section-eyebrow reveal">The Builders</div>
+            <h2 class="reveal delay-1" style="font-size:clamp(2rem,4vw,2.8rem);margin-bottom:16px;">Meet the minds behind <em style="color:var(--primary);font-style:italic;">VELORA</em></h2>
+            <p class="reveal delay-2" style="font-size:1rem;color:var(--text-muted);max-width:500px;margin:0 auto;line-height:1.75;">A passionate team of student creators who designed and built VELORA as a premium curated marketplace experience.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal">
+                <img class="team-avatar" src="assets/css/image/tom.jpeg" alt="Tom" loading="lazy">
+                <div class="team-name">Tom</div>
+                <div class="team-role">Landing Page</div>
+                <div class="team-desc">Designed and built the VELORA landing experience — from the hero section to the journal.</div>
+            </div>
+            <div class="team-card reveal delay-1">
+                <img class="team-avatar" src="assets/css/image/felysia.jpeg" alt="Felysia" loading="lazy">
+                <div class="team-name">Felysia</div>
+                <div class="team-role">Authentication</div>
+                <div class="team-desc">Crafted the sign in and register flows with secure PHP session handling.</div>
+            </div>
+            <div class="team-card reveal delay-2">
+                <img class="team-avatar" src="assets/css/image/jodi.jpeg" alt="Jodi" loading="lazy">
+                <div class="team-name">Jodi</div>
+                <div class="team-role">Store & Checkout</div>
+                <div class="team-desc">Built the shopping cart and checkout with a seamless payment experience.</div>
+            </div>
+            <div class="team-card reveal delay-3">
+                <img class="team-avatar" src="assets/css/image/bagus.jpeg" alt="Bagus" loading="lazy">
+                <div class="team-name">Bagus</div>
+                <div class="team-role">Design & Vision</div>
+                <div class="team-desc">Shaped the overall design vision and ensured a premium user experience throughout.</div>
             </div>
         </div>
     </div>
