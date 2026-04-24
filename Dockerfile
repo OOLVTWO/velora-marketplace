@@ -1,15 +1,11 @@
-# Use official PHP with Apache
-FROM php:8.2-apache
+# Use PHP CLI — avoids all Apache MPM conflicts on Railway
+FROM php:8.2-cli
 
-# Fix Apache MPM conflict — disable mpm_event, enable mpm_prefork, then enable rewrite
-RUN a2dismod mpm_event && a2enmod mpm_prefork && a2enmod rewrite
+WORKDIR /var/www/html
 
-# Copy all project files to Apache web root
-COPY . /var/www/html/
+# Copy all project files
+COPY . .
 
-# Set correct permissions
-RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html
-
-# Expose port 80
-EXPOSE 80
+# Railway injects $PORT at runtime — use PHP built-in server
+EXPOSE 8080
+CMD ["sh", "-c", "php -S 0.0.0.0:${PORT:-8080} -t /var/www/html"]
