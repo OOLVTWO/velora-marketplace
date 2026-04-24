@@ -1073,5 +1073,70 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <?php endif; ?>
+<script>
+/* ── BOUNCING HERO MASCOT (DVD screensaver style) ── */
+(function(){
+  function init(){
+    var hero = document.querySelector('.hero');
+    var m    = document.querySelector('.hero-char-img');
+    if(!hero || !m) return;
+
+    /* Override CSS animation and take full JS control */
+    m.style.animation  = 'none';
+    m.style.transition = 'transform 0.26s cubic-bezier(.2,0,.1,1)';
+    m.style.position   = 'absolute';
+    m.style.right      = 'auto';
+    m.style.bottom     = 'auto';
+    m.style.filter     = 'drop-shadow(0 12px 28px rgba(91,63,248,.45))';
+
+    var heroW, heroH, mW, mH;
+    function snap(){
+      heroW = hero.offsetWidth;
+      heroH = hero.offsetHeight;
+      mW    = m.offsetWidth;
+      mH    = m.offsetHeight;
+    }
+    snap();
+
+    /* Start bottom-right, moving diagonally up-left */
+    var x = heroW - mW;
+    var y = heroH - mH;
+    var spd = 2.6;
+    var dx = -(spd * 0.68);
+    var dy = -(spd * 0.74);
+
+    function face(){ return Math.atan2(dx,-dy)*180/Math.PI; }
+
+    m.style.left      = x+'px';
+    m.style.top       = y+'px';
+    m.style.transform = 'rotate('+face()+'deg)';
+
+    function tick(){
+      x += dx;
+      y += dy;
+      var hit = false;
+
+      if(x <= 0)           { x=0;          dx= Math.abs(dx); hit=true; }
+      else if(x >= heroW-mW){ x=heroW-mW;  dx=-Math.abs(dx); hit=true; }
+
+      if(y <= 0)           { y=0;          dy= Math.abs(dy); hit=true; }
+      else if(y >= heroH-mH){ y=heroH-mH;  dy=-Math.abs(dy); hit=true; }
+
+      m.style.left = x+'px';
+      m.style.top  = y+'px';
+      if(hit) m.style.transform = 'rotate('+face()+'deg)';
+
+      requestAnimationFrame(tick);
+    }
+
+    setTimeout(function(){ snap(); requestAnimationFrame(tick); }, 200);
+    window.addEventListener('resize', snap, {passive:true});
+  }
+
+  document.readyState==='loading'
+    ? document.addEventListener('DOMContentLoaded', init)
+    : init();
+})();
+</script>
 </body>
 </html>
