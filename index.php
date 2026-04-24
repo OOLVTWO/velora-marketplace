@@ -509,6 +509,25 @@ if (isset($_GET['msg'])) {
     .hero-orb-a,.hero-orb-b { display:none; }
 }
 
+/* ── SECTION CHARACTERS ── */
+.sc { position:absolute; pointer-events:none; user-select:none; line-height:1; z-index:0; }
+.sc-fl  { animation:charFloat  5.5s ease-in-out infinite; }
+.sc-fl2 { animation:charFloat  7.5s ease-in-out infinite 1.3s; }
+.sc-bo  { animation:charBounce 4.5s ease-in-out infinite 0.5s; }
+.sc-tw  { animation:twinkle   3s   ease-in-out infinite 0.4s; }
+.sc-tw2 { animation:twinkle   2.5s ease-in-out infinite 1.1s; }
+.sc-fl3 { animation:charFloat  6s   ease-in-out infinite 2s; }
+/* Team card unique emoji badge */
+.tc-badge {
+    position:absolute; top:14px; left:16px; z-index:4;
+    font-size:2.2rem; line-height:1;
+    filter:drop-shadow(0 4px 14px rgba(91,63,248,.45));
+    animation:charFloat 4.5s ease-in-out infinite;
+}
+/* Give stats-bar and footer a stacking context */
+.stats-bar { position:relative; overflow:hidden; }
+.nx-footer { position:relative; overflow:hidden; }
+
 </style>
 </head>
 <body>
@@ -612,6 +631,10 @@ if (isset($_GET['msg'])) {
 
 <!-- STATS BAR -->
 <section class="stats-bar">
+    <span class="sc sc-fl"  style="font-size:3rem;  top:-20%; left:1%;   color:rgba(255,255,255,.15);">📦</span>
+    <span class="sc sc-tw"  style="font-size:2rem;  top:0%;   right:3%;  color:rgba(255,255,255,.2); ">⭐</span>
+    <span class="sc sc-fl2" style="font-size:2.5rem;bottom:-30%;right:8%; color:rgba(255,255,255,.12);">🏆</span>
+    <span class="sc sc-bo"  style="font-size:1.2rem;top:0%;   left:20%;  color:rgba(255,255,255,.18);">💯</span>
     <div class="nx-container">
         <div class="stats-grid">
             <div class="stat-item">
@@ -635,7 +658,12 @@ if (isset($_GET['msg'])) {
 </section>
 
 <!-- CATEGORIES -->
-<section class="nx-section" id="categories">
+<section class="nx-section" id="categories" style="position:relative;">
+    <span class="sc sc-fl"  style="font-size:3.5rem;top:6%;  right:1%; opacity:.35;">🪑</span>
+    <span class="sc sc-tw"  style="font-size:2.5rem;bottom:6%;left:1%;  opacity:.3; ">🌿</span>
+    <span class="sc sc-fl2" style="font-size:2rem;  top:6%;  left:38%; opacity:.22;">💡</span>
+    <span class="sc sc-bo"  style="font-size:2.5rem;bottom:6%;right:18%;opacity:.28;">🎨</span>
+    <span class="sc sc-tw2" style="font-size:1.5rem;top:40%; right:4%; opacity:.2; ">👗</span>
     <div class="nx-container">
         <div class="reveal">
             <span class="section-eyebrow">Browse</span>
@@ -676,7 +704,11 @@ if (isset($_GET['msg'])) {
 </section>
 
 <!-- FEATURED -->
-<section class="nx-section" id="featured" style="background:var(--surface);">
+<section class="nx-section" id="featured" style="background:var(--surface);position:relative;">
+    <span class="sc sc-fl"  style="font-size:3.5rem;top:6%;  right:1%; opacity:.4; ">💎</span>
+    <span class="sc sc-tw"  style="font-size:2.5rem;bottom:8%;left:1%;  opacity:.35;">🎬</span>
+    <span class="sc sc-fl2" style="font-size:2rem;  top:10%; left:2%;  opacity:.28;">✨</span>
+    <span class="sc sc-tw2" style="font-size:1.5rem;bottom:5%;right:12%;opacity:.28;">🌟</span>
     <div class="nx-container">
         <div class="featured-grid">
             <div class="featured-img-wrap reveal left">
@@ -708,7 +740,12 @@ if (isset($_GET['msg'])) {
 </section>
 
 <!-- PRODUCT OF THE WEEK -->
-<section class="nx-section" id="potw">
+<section class="nx-section" id="potw" style="position:relative;">
+    <span class="sc sc-fl"  style="font-size:4rem;  top:6%;  right:1%; opacity:.35;">🏆</span>
+    <span class="sc sc-tw"  style="font-size:2.5rem;bottom:8%;left:1%;  opacity:.3; ">🔥</span>
+    <span class="sc sc-fl2" style="font-size:3rem;  top:6%;  left:2%;  opacity:.22;">🎧</span>
+    <span class="sc sc-tw2" style="font-size:1.5rem;bottom:5%;right:10%;opacity:.28;">⭐</span>
+    <span class="sc sc-fl3" style="font-size:2rem;  top:45%; right:5%; opacity:.2; ">💜</span>
     <div class="nx-container">
         <div class="reveal" style="margin-bottom:36px;">
             <span class="section-eyebrow">Weekly Pick</span>
@@ -734,7 +771,11 @@ if (isset($_GET['msg'])) {
 </section>
 
 <!-- JOURNAL -->
-<section class="nx-section" id="journal" style="background:var(--surface);">
+<section class="nx-section" id="journal" style="background:var(--surface);position:relative;">
+    <span class="sc sc-fl"  style="font-size:3rem;  top:6%;  right:1%; opacity:.4; ">📖</span>
+    <span class="sc sc-tw"  style="font-size:2.5rem;bottom:8%;left:1%;  opacity:.35;">✍️</span>
+    <span class="sc sc-fl2" style="font-size:2rem;  top:8%;  left:2%;  opacity:.28;">💡</span>
+    <span class="sc sc-tw2" style="font-size:1.5rem;bottom:5%;right:10%;opacity:.28;">🖊️</span>
     <div class="nx-container">
         <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:16px;">
             <div>
@@ -790,6 +831,7 @@ if (isset($_GET['msg'])) {
             <div class="team-card-wrap reveal">
                 <div class="team-card">
                     <div class="team-card-num">01</div>
+                    <div class="tc-badge">🖥️</div>
                     <div class="team-photo-area">
                         <div class="t-ring t-ring-1"></div>
                         <div class="t-ring t-ring-2"></div>
@@ -812,6 +854,7 @@ if (isset($_GET['msg'])) {
             <div class="team-card-wrap reveal delay-1">
                 <div class="team-card">
                     <div class="team-card-num">02</div>
+                    <div class="tc-badge">🔐</div>
                     <div class="team-photo-area">
                         <div class="t-ring t-ring-1"></div>
                         <div class="t-ring t-ring-2"></div>
@@ -834,6 +877,7 @@ if (isset($_GET['msg'])) {
             <div class="team-card-wrap reveal delay-2">
                 <div class="team-card">
                     <div class="team-card-num">03</div>
+                    <div class="tc-badge">🛒</div>
                     <div class="team-photo-area">
                         <div class="t-ring t-ring-1"></div>
                         <div class="t-ring t-ring-2"></div>
@@ -856,6 +900,7 @@ if (isset($_GET['msg'])) {
             <div class="team-card-wrap reveal delay-3">
                 <div class="team-card">
                     <div class="team-card-num">04</div>
+                    <div class="tc-badge">🎨</div>
                     <div class="team-photo-area">
                         <div class="t-ring t-ring-1"></div>
                         <div class="t-ring t-ring-2"></div>
@@ -881,6 +926,11 @@ if (isset($_GET['msg'])) {
 
 <!-- FOOTER -->
 <footer class="nx-footer" id="about">
+    <span class="sc sc-fl"  style="font-size:5rem;  top:5%;  right:2%; opacity:.13;">💜</span>
+    <span class="sc sc-tw"  style="font-size:2.5rem;top:15%; left:1%;  opacity:.1; ">✦</span>
+    <span class="sc sc-fl2" style="font-size:4rem;  bottom:15%;right:8%;opacity:.1; ">🌟</span>
+    <span class="sc sc-tw2" style="font-size:2.5rem;top:40%; left:5%;  opacity:.1; ">🛍️</span>
+    <span class="sc sc-bo"  style="font-size:1.8rem;bottom:5%;left:30%;opacity:.1; ">✨</span>
     <div class="nx-container">
         <div class="nx-footer-grid">
             <div class="nx-footer-brand">
