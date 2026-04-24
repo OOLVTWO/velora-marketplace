@@ -1,0 +1,28 @@
+# XAMPP / Local server logs
+*.log
+*.bak
+*.tmp
+error_log
+
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Sensitive config files (never commit credentials)
+config.php
+.env
+*.env
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Composer / Node (if added later)
+vendor/
+node_modules/
