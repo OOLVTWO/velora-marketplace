@@ -6,5 +6,5 @@ WORKDIR /app
 # Copy all project files
 COPY . .
 
-# Railway injects PORT env var — shell form expands it properly
-CMD php -S 0.0.0.0:$PORT -t /app
+# PORT=8080 is set in Railway variables — hardcode to avoid shell expansion issues
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "/app"]
