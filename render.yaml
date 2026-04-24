@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: velora-marketplace
+    env: docker
+    dockerfilePath: ./Dockerfile
+    branch: main
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 8080
