@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * VELORA Marketplace — Landing Page (index.php)
  * Developer: Tom
@@ -497,14 +497,7 @@ if (isset($_GET['msg'])) {
 [data-theme="light"] .team-links a:hover { background:rgba(91,63,248,.2); color:#5B3FD4; }
 [data-theme="light"] .team-card-wrap { background:linear-gradient(135deg,rgba(91,63,248,.45),rgba(167,139,250,.28),rgba(91,63,248,.45)); }
 
-/* ── TEAM CARD CHARACTERS ── */
-.team-card-wrap { position: relative; }
-.team-grid { overflow: visible; }
-.tc-char-wrap { position:absolute; top:-58px; left:50%; transform:translateX(-50%); z-index:10; pointer-events:none; }
-.tc-char { width:76px; height:auto; animation:charFloat 4.5s ease-in-out infinite; filter:drop-shadow(0 8px 24px rgba(91,63,248,.45)); }
-.team-card-wrap:nth-child(2) .tc-char { animation-delay:.6s; }
-.team-card-wrap:nth-child(3) .tc-char { animation-delay:1.2s; }
-.team-card-wrap:nth-child(4) .tc-char { animation-delay:1.8s; }
+
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
@@ -550,22 +543,7 @@ if (isset($_GET['msg'])) {
 /* Give stats-bar and footer a stacking context */
 .stats-bar { position:relative; overflow:hidden; }
 .nx-footer { position:relative; overflow:hidden; }
-/* ── ILLUSTRATED CHARACTER ── */
-.hero-char-img {
-    position: absolute; right: 0; bottom: 0;
-    width: 300px; max-width: 32vw;
-    animation: heroCharAnim 10s ease-in-out infinite;
-    pointer-events: none; z-index: 1;
-    filter: drop-shadow(0 20px 50px rgba(91,63,248,.3));
-}
-@keyframes heroCharAnim {
-    0%   { transform: translateY(0px)   rotate(0deg); }
-    25%  { transform: translateY(-16px) rotate(90deg); }
-    50%  { transform: translateY(-6px)  rotate(180deg); }
-    75%  { transform: translateY(-20px) rotate(270deg); }
-    100% { transform: translateY(0px)   rotate(360deg); }
-}
-@media(max-width:900px) { .hero-char-img { display:none; } }
+
 /* Static section mascots (no animation) */
 .sec-mascot { position:absolute; pointer-events:none; user-select:none; z-index:0; }
 .tc-icon-badge {
@@ -647,67 +625,6 @@ if (isset($_GET['msg'])) {
             </div>
         </div>
     </div>
-    <div class="hero-char-img" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" fill="none" style="width:100%;height:100%;">
-        <defs>
-          <radialGradient id="bg1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#a78bfa" stop-opacity=".18"/><stop offset="100%" stop-color="#5b3fd4" stop-opacity="0"/></radialGradient>
-          <radialGradient id="headG" cx="40%" cy="35%"><stop offset="0%" stop-color="#c4b5fd"/><stop offset="100%" stop-color="#7c3aed"/></radialGradient>
-          <radialGradient id="bodyG" cx="35%" cy="30%"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#5b21b6"/></radialGradient>
-          <radialGradient id="faceG" cx="40%" cy="35%"><stop offset="0%" stop-color="#f5f3ff"/><stop offset="100%" stop-color="#ede9fe"/></radialGradient>
-          <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <!-- ambient glow -->
-        <ellipse cx="150" cy="200" rx="140" ry="140" fill="url(#bg1)"/>
-        <!-- shadow -->
-        <ellipse cx="150" cy="392" rx="52" ry="8" fill="rgba(91,63,248,.13)"/>
-        <!-- feet -->
-        <ellipse cx="122" cy="358" rx="22" ry="13" fill="#6d28d9"/><ellipse cx="122" cy="354" rx="20" ry="12" fill="#7c3aed"/>
-        <ellipse cx="178" cy="358" rx="22" ry="13" fill="#6d28d9"/><ellipse cx="178" cy="354" rx="20" ry="12" fill="#7c3aed"/>
-        <!-- body -->
-        <ellipse cx="150" cy="268" rx="72" ry="86" fill="url(#bodyG)"/>
-        <ellipse cx="146" cy="255" rx="58" ry="68" fill="rgba(196,181,253,.22)"/>
-        <!-- neck -->
-        <ellipse cx="150" cy="185" rx="28" ry="16" fill="#7c3aed"/>
-        <!-- head (helmet-style) -->
-        <circle cx="150" cy="118" r="78" fill="url(#headG)"/>
-        <circle cx="150" cy="118" r="70" fill="#f0ebff"/>
-        <!-- face visor -->
-        <ellipse cx="150" cy="122" rx="50" ry="46" fill="url(#faceG)"/>
-        <!-- blush -->
-        <ellipse cx="110" cy="138" rx="14" ry="9" fill="rgba(236,72,153,.2)"/>
-        <ellipse cx="190" cy="138" rx="14" ry="9" fill="rgba(236,72,153,.2)"/>
-        <!-- eyes -->
-        <ellipse cx="130" cy="112" rx="12" ry="14" fill="#3b0764"/>
-        <ellipse cx="170" cy="112" rx="12" ry="14" fill="#3b0764"/>
-        <!-- eye shine -->
-        <circle cx="134" cy="107" r="4" fill="white"/>
-        <circle cx="174" cy="107" r="4" fill="white"/>
-        <circle cx="128" cy="116" r="2" fill="rgba(255,255,255,.6)"/>
-        <circle cx="168" cy="116" r="2" fill="rgba(255,255,255,.6)"/>
-        <!-- smile -->
-        <path d="M120 142 Q150 162 180 142" stroke="#3b0764" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-        <!-- left arm -->
-        <path d="M84 248 Q62 222 68 200" stroke="#7c3aed" stroke-width="20" stroke-linecap="round" fill="none"/>
-        <circle cx="68" cy="193" r="15" fill="#a78bfa"/>
-        <!-- right arm -->
-        <path d="M216 248 Q234 218 228 196" stroke="#7c3aed" stroke-width="20" stroke-linecap="round" fill="none"/>
-        <circle cx="228" cy="188" r="15" fill="#a78bfa"/>
-        <!-- shopping bag -->
-        <rect x="230" y="146" width="58" height="68" rx="10" fill="#7c3aed"/>
-        <rect x="235" y="151" width="48" height="58" rx="8" fill="#c4b5fd"/>
-        <path d="M244 146 C244 130 274 130 274 146" stroke="#5b21b6" stroke-width="4" stroke-linecap="round" fill="none"/>
-        <!-- bag label -->
-        <rect x="246" y="168" width="26" height="18" rx="4" fill="rgba(91,63,248,.35)"/>
-        <text x="259" y="181" text-anchor="middle" font-size="11" fill="white" font-weight="bold">V</text>
-        <!-- star decorations -->
-        <path d="M44 95 L46 102 L53 104 L46 106 L44 113 L42 106 L35 104 L42 102 Z" fill="#c4b5fd" opacity=".75" filter="url(#glow)"/>
-        <path d="M256 58 L258 63 L263 65 L258 67 L256 72 L254 67 L249 65 L254 63 Z" fill="#ddd6fe" opacity=".7"/>
-        <path d="M22 175 L23.5 179 L28 181 L23.5 183 L22 187 L20.5 183 L16 181 L20.5 179 Z" fill="#a78bfa" opacity=".6"/>
-        <circle cx="270" cy="290" r="4" fill="#c4b5fd" opacity=".5"/>
-        <circle cx="40" cy="310" r="3" fill="#ddd6fe" opacity=".5"/>
-        <circle cx="275" cy="170" r="3" fill="#a78bfa" opacity=".55"/>
-      </svg>
-    </div>
 </section>
 
 <!-- STATS BAR -->
@@ -736,9 +653,6 @@ if (isset($_GET['msg'])) {
 
 <!-- CATEGORIES -->
 <section class="nx-section" id="categories" style="position:relative;">
-    <div class="sec-mascot" style="bottom:6%;left:1%;width:80px;transform:rotate(90deg);opacity:.7;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(91,63,248,.1)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#7c3aed"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.22)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#7c3aed"/><circle cx="25" cy="15" r="13" fill="#8b5cf6"/><circle cx="25" cy="15" r="11" fill="#f0ebff"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#3b0764" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-    <div class="sec-mascot" style="top:6%;right:1.5%;width:65px;transform:rotate(-22deg);opacity:.65;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(91,63,248,.1)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#7c3aed"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.22)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#7c3aed"/><circle cx="25" cy="15" r="13" fill="#8b5cf6"/><circle cx="25" cy="15" r="11" fill="#f0ebff"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#3b0764" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-    <div class="sec-mascot" style="top:42%;right:0.5%;width:52px;transform:rotate(180deg);opacity:.55;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(91,63,248,.1)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#7c3aed"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.22)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#7c3aed"/><circle cx="25" cy="15" r="13" fill="#8b5cf6"/><circle cx="25" cy="15" r="11" fill="#f0ebff"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#3b0764" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
     <div class="nx-container">
         <div class="reveal">
             <span class="section-eyebrow">Browse</span>
@@ -780,8 +694,6 @@ if (isset($_GET['msg'])) {
 
 <!-- FEATURED -->
 <section class="nx-section" id="featured" style="background:var(--surface);position:relative;">
-    <div class="sec-mascot" style="bottom:8%;right:1%;width:75px;transform:rotate(-90deg);opacity:.65;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(91,63,248,.1)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#7c3aed"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.22)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#7c3aed"/><circle cx="25" cy="15" r="13" fill="#8b5cf6"/><circle cx="25" cy="15" r="11" fill="#f0ebff"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#3b0764" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-    <div class="sec-mascot" style="top:8%;left:1%;width:62px;transform:rotate(25deg);opacity:.6;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(91,63,248,.1)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#7c3aed"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.22)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#7c3aed"/><circle cx="25" cy="15" r="13" fill="#8b5cf6"/><circle cx="25" cy="15" r="11" fill="#f0ebff"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#3b0764" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
     <div class="nx-container">
         <div class="featured-grid">
             <div class="featured-img-wrap reveal left">
@@ -840,9 +752,6 @@ if (isset($_GET['msg'])) {
 
 <!-- JOURNAL -->
 <section class="nx-section" id="journal" style="background:var(--surface);position:relative;">
-    <div class="sec-mascot" style="bottom:8%;left:1%;width:78px;transform:rotate(90deg);opacity:.65;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(91,63,248,.1)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#7c3aed"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.22)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#7c3aed"/><circle cx="25" cy="15" r="13" fill="#8b5cf6"/><circle cx="25" cy="15" r="11" fill="#f0ebff"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#3b0764" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-    <div class="sec-mascot" style="top:6%;right:1.5%;width:58px;transform:rotate(-18deg);opacity:.6;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(91,63,248,.1)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#7c3aed"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.22)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#7c3aed"/><circle cx="25" cy="15" r="13" fill="#8b5cf6"/><circle cx="25" cy="15" r="11" fill="#f0ebff"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#3b0764" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-    <div class="sec-mascot" style="top:45%;left:0.5%;width:50px;transform:rotate(-90deg);opacity:.5;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(91,63,248,.1)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#6d28d9"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#7c3aed"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.22)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#7c3aed"/><circle cx="25" cy="15" r="13" fill="#8b5cf6"/><circle cx="25" cy="15" r="11" fill="#f0ebff"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#3b0764"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#3b0764" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
     <div class="nx-container">
         <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:16px;">
             <div>
@@ -887,8 +796,6 @@ if (isset($_GET['msg'])) {
 <section class="team-section" id="team">
     <div class="team-blob team-blob-1"></div>
     <div class="team-blob team-blob-2"></div>
-    <div class="sec-mascot" style="top:8%;left:1.5%;width:70px;transform:rotate(-15deg);opacity:.45;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(167,139,250,.15)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#a78bfa"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.3)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#a78bfa"/><circle cx="25" cy="15" r="13" fill="#c4b5fd"/><circle cx="25" cy="15" r="11" fill="#ede9fe"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#4c1d95" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-    <div class="sec-mascot" style="bottom:8%;right:1.5%;width:65px;transform:rotate(20deg);opacity:.4;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(167,139,250,.15)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#a78bfa"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.3)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#a78bfa"/><circle cx="25" cy="15" r="13" fill="#c4b5fd"/><circle cx="25" cy="15" r="11" fill="#ede9fe"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#4c1d95" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
     <div class="nx-container">
         <div class="team-header">
             <div class="section-eyebrow reveal">The Builders</div>
@@ -898,7 +805,6 @@ if (isset($_GET['msg'])) {
         <div class="team-grid">
 
             <div class="team-card-wrap reveal">
-                <div class="tc-char-wrap"><svg class="tc-char" viewBox="0 0 80 112" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="109" rx="16" ry="3" fill="rgba(91,63,248,.12)"/><ellipse cx="32" cy="98" rx="7" ry="4" fill="#6d28d9"/><ellipse cx="32" cy="95" rx="6" ry="3.5" fill="#7c3aed"/><ellipse cx="48" cy="98" rx="7" ry="4" fill="#6d28d9"/><ellipse cx="48" cy="95" rx="6" ry="3.5" fill="#7c3aed"/><ellipse cx="40" cy="68" rx="19" ry="24" fill="#7c3aed"/><ellipse cx="39" cy="60" rx="14" ry="17" fill="rgba(196,181,253,.2)"/><ellipse cx="40" cy="46" rx="8" ry="5" fill="#7c3aed"/><circle cx="40" cy="26" r="20" fill="#8b5cf6"/><circle cx="40" cy="26" r="17" fill="#f0ebff"/><ellipse cx="40" cy="28" rx="12" ry="11" fill="#f5f3ff"/><ellipse cx="30" cy="32" rx="4" ry="3" fill="rgba(236,72,153,.22)"/><ellipse cx="50" cy="32" rx="4" ry="3" fill="rgba(236,72,153,.22)"/><ellipse cx="35" cy="25" rx="3.5" ry="4.5" fill="#3b0764"/><ellipse cx="45" cy="25" rx="3.5" ry="4.5" fill="#3b0764"/><circle cx="36.5" cy="23" r="1.5" fill="white"/><circle cx="46.5" cy="23" r="1.5" fill="white"/><path d="M33 34 Q40 41 47 34" stroke="#3b0764" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M23 66 Q11 57 16 47" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="15" cy="44" r="6" fill="#a78bfa"/><path d="M57 66 Q69 57 64 47" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="65" cy="44" r="6" fill="#a78bfa"/><rect x="4" y="37" width="26" height="16" rx="2" fill="#c4b5fd"/><rect x="6" y="39" width="22" height="11" rx="1.5" fill="#4c1d95"/><rect x="8" y="41" width="5" height="2" rx=".5" fill="#a78bfa"/><rect x="15" y="41" width="9" height="2" rx=".5" fill="#7c3aed" opacity=".6"/><rect x="8" y="45" width="14" height="1.5" rx=".5" fill="#a78bfa" opacity=".5"/></svg></div>
                 <div class="team-card">
                     <div class="team-card-num">01</div>
                     <div class="tc-icon-badge"><i class="bi bi-window-fullscreen"></i></div>
@@ -922,7 +828,6 @@ if (isset($_GET['msg'])) {
             </div>
 
             <div class="team-card-wrap reveal delay-1">
-                <div class="tc-char-wrap"><svg class="tc-char" viewBox="0 0 80 112" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="109" rx="16" ry="3" fill="rgba(91,63,248,.12)"/><ellipse cx="32" cy="98" rx="7" ry="4" fill="#6d28d9"/><ellipse cx="32" cy="95" rx="6" ry="3.5" fill="#7c3aed"/><ellipse cx="48" cy="98" rx="7" ry="4" fill="#6d28d9"/><ellipse cx="48" cy="95" rx="6" ry="3.5" fill="#7c3aed"/><ellipse cx="40" cy="68" rx="19" ry="24" fill="#7c3aed"/><ellipse cx="39" cy="60" rx="14" ry="17" fill="rgba(196,181,253,.2)"/><ellipse cx="40" cy="46" rx="8" ry="5" fill="#7c3aed"/><circle cx="40" cy="26" r="20" fill="#8b5cf6"/><circle cx="40" cy="26" r="17" fill="#f0ebff"/><ellipse cx="40" cy="28" rx="12" ry="11" fill="#f5f3ff"/><ellipse cx="30" cy="32" rx="4" ry="3" fill="rgba(236,72,153,.22)"/><ellipse cx="50" cy="32" rx="4" ry="3" fill="rgba(236,72,153,.22)"/><ellipse cx="35" cy="25" rx="3.5" ry="4.5" fill="#3b0764"/><ellipse cx="45" cy="25" rx="3.5" ry="4.5" fill="#3b0764"/><circle cx="36.5" cy="23" r="1.5" fill="white"/><circle cx="46.5" cy="23" r="1.5" fill="white"/><path d="M33 34 Q40 41 47 34" stroke="#3b0764" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M23 66 Q11 57 16 47" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="15" cy="44" r="6" fill="#a78bfa"/><path d="M57 66 Q69 57 64 47" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="65" cy="44" r="6" fill="#a78bfa"/><circle cx="22" cy="47" r="8" stroke="#fbbf24" stroke-width="2.5" fill="rgba(251,191,36,.15)"/><circle cx="22" cy="47" r="4" fill="#fbbf24"/><rect x="26" y="45.5" width="17" height="3" rx="1.5" fill="#fbbf24"/><rect x="38" y="48.5" width="4" height="3.5" rx="1" fill="#fbbf24"/><rect x="42" y="48.5" width="4" height="3.5" rx="1" fill="#fbbf24"/></svg></div>
                 <div class="team-card">
                     <div class="team-card-num">02</div>
                     <div class="tc-icon-badge"><i class="bi bi-shield-lock-fill"></i></div>
@@ -946,7 +851,6 @@ if (isset($_GET['msg'])) {
             </div>
 
             <div class="team-card-wrap reveal delay-2">
-                <div class="tc-char-wrap"><svg class="tc-char" viewBox="0 0 80 112" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="109" rx="16" ry="3" fill="rgba(91,63,248,.12)"/><ellipse cx="32" cy="98" rx="7" ry="4" fill="#6d28d9"/><ellipse cx="32" cy="95" rx="6" ry="3.5" fill="#7c3aed"/><ellipse cx="48" cy="98" rx="7" ry="4" fill="#6d28d9"/><ellipse cx="48" cy="95" rx="6" ry="3.5" fill="#7c3aed"/><ellipse cx="40" cy="68" rx="19" ry="24" fill="#7c3aed"/><ellipse cx="39" cy="60" rx="14" ry="17" fill="rgba(196,181,253,.2)"/><ellipse cx="40" cy="46" rx="8" ry="5" fill="#7c3aed"/><circle cx="40" cy="26" r="20" fill="#8b5cf6"/><circle cx="40" cy="26" r="17" fill="#f0ebff"/><ellipse cx="40" cy="28" rx="12" ry="11" fill="#f5f3ff"/><ellipse cx="30" cy="32" rx="4" ry="3" fill="rgba(236,72,153,.22)"/><ellipse cx="50" cy="32" rx="4" ry="3" fill="rgba(236,72,153,.22)"/><ellipse cx="35" cy="25" rx="3.5" ry="4.5" fill="#3b0764"/><ellipse cx="45" cy="25" rx="3.5" ry="4.5" fill="#3b0764"/><circle cx="36.5" cy="23" r="1.5" fill="white"/><circle cx="46.5" cy="23" r="1.5" fill="white"/><path d="M33 34 Q40 41 47 34" stroke="#3b0764" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M23 66 Q11 57 16 47" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="15" cy="44" r="6" fill="#a78bfa"/><path d="M57 66 Q69 57 64 47" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="65" cy="44" r="6" fill="#a78bfa"/><rect x="5" y="38" width="22" height="20" rx="3" fill="#7c3aed"/><rect x="7" y="40" width="18" height="16" rx="2" fill="#c4b5fd"/><path d="M11 38 C11 32 21 32 21 38" stroke="#5b21b6" stroke-width="2.5" stroke-linecap="round" fill="none"/><rect x="10" y="44" width="10" height="6" rx="1.5" fill="rgba(91,63,248,.3)"/></svg></div>
                 <div class="team-card">
                     <div class="team-card-num">03</div>
                     <div class="tc-icon-badge"><i class="bi bi-bag-heart-fill"></i></div>
@@ -970,7 +874,6 @@ if (isset($_GET['msg'])) {
             </div>
 
             <div class="team-card-wrap reveal delay-3">
-                <div class="tc-char-wrap"><svg class="tc-char" viewBox="0 0 80 112" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="40" cy="109" rx="16" ry="3" fill="rgba(91,63,248,.12)"/><ellipse cx="32" cy="98" rx="7" ry="4" fill="#6d28d9"/><ellipse cx="32" cy="95" rx="6" ry="3.5" fill="#7c3aed"/><ellipse cx="48" cy="98" rx="7" ry="4" fill="#6d28d9"/><ellipse cx="48" cy="95" rx="6" ry="3.5" fill="#7c3aed"/><ellipse cx="40" cy="68" rx="19" ry="24" fill="#7c3aed"/><ellipse cx="39" cy="60" rx="14" ry="17" fill="rgba(196,181,253,.2)"/><ellipse cx="40" cy="46" rx="8" ry="5" fill="#7c3aed"/><circle cx="40" cy="26" r="20" fill="#8b5cf6"/><circle cx="40" cy="26" r="17" fill="#f0ebff"/><ellipse cx="40" cy="28" rx="12" ry="11" fill="#f5f3ff"/><ellipse cx="30" cy="32" rx="4" ry="3" fill="rgba(236,72,153,.22)"/><ellipse cx="50" cy="32" rx="4" ry="3" fill="rgba(236,72,153,.22)"/><ellipse cx="35" cy="25" rx="3.5" ry="4.5" fill="#3b0764"/><ellipse cx="45" cy="25" rx="3.5" ry="4.5" fill="#3b0764"/><circle cx="36.5" cy="23" r="1.5" fill="white"/><circle cx="46.5" cy="23" r="1.5" fill="white"/><path d="M33 34 Q40 41 47 34" stroke="#3b0764" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M23 66 Q11 57 16 47" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="15" cy="44" r="6" fill="#a78bfa"/><path d="M57 66 Q69 57 64 47" stroke="#7c3aed" stroke-width="7" stroke-linecap="round" fill="none"/><circle cx="65" cy="44" r="6" fill="#a78bfa"/><ellipse cx="17" cy="52" rx="12" ry="8" fill="#f0ebff" stroke="#7c3aed" stroke-width="1.5"/><circle cx="11" cy="52" r="3" fill="#ef4444"/><circle cx="17" cy="49" r="3" fill="#fbbf24"/><circle cx="23" cy="52" r="3" fill="#34d399"/><circle cx="17" cy="55" r="3" fill="#a78bfa"/><rect x="25" y="35" width="3" height="20" rx="1.5" fill="#92400e" transform="rotate(-30 25 35)"/><ellipse cx="20" cy="34" rx="4" ry="2.5" fill="#7c3aed" transform="rotate(-30 20 34)"/></svg></div>
                 <div class="team-card">
                     <div class="team-card-num">04</div>
                     <div class="tc-icon-badge"><i class="bi bi-palette-fill"></i></div>
@@ -999,10 +902,6 @@ if (isset($_GET['msg'])) {
 
 <!-- FOOTER -->
 <footer class="nx-footer" id="about">
-    <div class="sec-mascot" style="top:6%;right:2%;width:72px;transform:rotate(-25deg);opacity:.35;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(167,139,250,.12)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#a78bfa"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.25)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#a78bfa"/><circle cx="25" cy="15" r="13" fill="#c4b5fd"/><circle cx="25" cy="15" r="11" fill="#ede9fe"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#4c1d95" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-    <div class="sec-mascot" style="bottom:10%;left:1%;width:80px;transform:rotate(90deg);opacity:.3;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(167,139,250,.12)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#a78bfa"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.25)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#a78bfa"/><circle cx="25" cy="15" r="13" fill="#c4b5fd"/><circle cx="25" cy="15" r="11" fill="#ede9fe"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#4c1d95" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-    <div class="sec-mascot" style="top:40%;left:2%;width:55px;transform:rotate(15deg);opacity:.28;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(167,139,250,.12)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#a78bfa"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.25)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#a78bfa"/><circle cx="25" cy="15" r="13" fill="#c4b5fd"/><circle cx="25" cy="15" r="11" fill="#ede9fe"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#4c1d95" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
-    <div class="sec-mascot" style="bottom:6%;right:3%;width:60px;transform:rotate(180deg);opacity:.3;"><svg viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="25" cy="65" rx="10" ry="3" fill="rgba(167,139,250,.12)"/><ellipse cx="19" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="31" cy="57" rx="5" ry="3" fill="#a78bfa"/><ellipse cx="25" cy="43" rx="13" ry="16" fill="#a78bfa"/><ellipse cx="24" cy="36" rx="10" ry="12" fill="rgba(196,181,253,.25)"/><ellipse cx="25" cy="28" rx="6" ry="4" fill="#a78bfa"/><circle cx="25" cy="15" r="13" fill="#c4b5fd"/><circle cx="25" cy="15" r="11" fill="#ede9fe"/><ellipse cx="25" cy="16" rx="8" ry="7.5" fill="#f5f3ff"/><ellipse cx="19" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><ellipse cx="31" cy="14" rx="2.8" ry="3.5" fill="#4c1d95"/><circle cx="20" cy="12" r="1" fill="white"/><circle cx="32" cy="12" r="1" fill="white"/><path d="M18 22 Q25 28 32 22" stroke="#4c1d95" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></div>
     <div class="nx-container">
         <div class="nx-footer-grid">
             <div class="nx-footer-brand">
@@ -1073,70 +972,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <?php endif; ?>
-<script>
-/* ── BOUNCING HERO MASCOT (DVD screensaver style) ── */
-(function(){
-  function init(){
-    var hero = document.querySelector('.hero');
-    var m    = document.querySelector('.hero-char-img');
-    if(!hero || !m) return;
-
-    /* Override CSS animation and take full JS control */
-    m.style.animation  = 'none';
-    m.style.transition = 'transform 0.26s cubic-bezier(.2,0,.1,1)';
-    m.style.position   = 'absolute';
-    m.style.right      = 'auto';
-    m.style.bottom     = 'auto';
-    m.style.filter     = 'drop-shadow(0 12px 28px rgba(91,63,248,.45))';
-
-    var heroW, heroH, mW, mH;
-    function snap(){
-      heroW = hero.offsetWidth;
-      heroH = hero.offsetHeight;
-      mW    = m.offsetWidth;
-      mH    = m.offsetHeight;
-    }
-    snap();
-
-    /* Start bottom-right, moving diagonally up-left */
-    var x = heroW - mW;
-    var y = heroH - mH;
-    var spd = 2.6;
-    var dx = -(spd * 0.68);
-    var dy = -(spd * 0.74);
-
-    function face(){ return Math.atan2(dx,-dy)*180/Math.PI; }
-
-    m.style.left      = x+'px';
-    m.style.top       = y+'px';
-    m.style.transform = 'rotate('+face()+'deg)';
-
-    function tick(){
-      x += dx;
-      y += dy;
-      var hit = false;
-
-      if(x <= 0)           { x=0;          dx= Math.abs(dx); hit=true; }
-      else if(x >= heroW-mW){ x=heroW-mW;  dx=-Math.abs(dx); hit=true; }
-
-      if(y <= 0)           { y=0;          dy= Math.abs(dy); hit=true; }
-      else if(y >= heroH-mH){ y=heroH-mH;  dy=-Math.abs(dy); hit=true; }
-
-      m.style.left = x+'px';
-      m.style.top  = y+'px';
-      if(hit) m.style.transform = 'rotate('+face()+'deg)';
-
-      requestAnimationFrame(tick);
-    }
-
-    setTimeout(function(){ snap(); requestAnimationFrame(tick); }, 200);
-    window.addEventListener('resize', snap, {passive:true});
-  }
-
-  document.readyState==='loading'
-    ? document.addEventListener('DOMContentLoaded', init)
-    : init();
-})();
-</script>
 </body>
 </html>
