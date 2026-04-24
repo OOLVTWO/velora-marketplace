@@ -336,7 +336,12 @@ function formatRp($n) {
             outline: none;
             padding: 0;
             height: 32px;
+            color: var(--text-main);
+            -moz-appearance: textfield;
         }
+        /* Hide browser number spinners — we have custom +/- buttons */
+        .qty-val::-webkit-outer-spin-button,
+        .qty-val::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
         /* ITEM SUBTOTAL */
         .item-subtotal {
@@ -430,6 +435,7 @@ function formatRp($n) {
         }
         .btn-promo {
             background: var(--bg);
+            color: var(--text-main);
             border: 1.5px solid var(--border);
             border-radius: var(--radius-sm);
             padding: 0 16px;
@@ -703,13 +709,14 @@ function formatRp($n) {
                 <?php
                 $suggestions = [
                     ['name'=>'Woven Rattan Shelf','price'=>1850000,'img'=>'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&q=80'],
-                    ['name'=>'Stone Candle Holder','price'=>290000,'img'=>'https://images.unsplash.com/photo-1602526429747-98c8e82e05b6?w=300&q=80'],
+                    ['name'=>'Stone Candle Holder','price'=>290000,'img'=>'https://images.unsplash.com/photo-1543313279-9fc5f0a0e0de?w=300&q=80'],
                     ['name'=>'Linen Throw Pillow','price'=>345000,'img'=>'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=300&q=80'],
                 ];
                 foreach ($suggestions as $s): ?>
                 <div class="col-4">
                     <div class="suggest-card">
-                        <img src="<?= $s['img'] ?>" class="suggest-img" alt="<?= $s['name'] ?>">
+                        <img src="<?= $s['img'] ?>" class="suggest-img" alt="<?= $s['name'] ?>"
+                             onerror="this.onerror=null;this.src='https://picsum.photos/seed/<?= urlencode($s['name']) ?>/300/140'">
                         <div class="suggest-body d-flex align-items-center justify-content-between">
                             <div>
                                 <div class="suggest-name"><?= $s['name'] ?></div>
