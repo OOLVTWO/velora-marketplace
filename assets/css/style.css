@@ -51,6 +51,8 @@
     --surface2: #1C1B35;
     --border:   #272540;
 
+    --primary-light: rgba(91,63,248,0.18);
+
     --shadow-sm: 0 2px 8px rgba(0,0,0,.5);
     --shadow:    0 4px 24px rgba(0,0,0,.6);
     --shadow-lg: 0 12px 48px rgba(0,0,0,.7);

@@ -132,6 +132,32 @@ if (isset($_GET['msg'])) {
 .hero-cta-row { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
 .hero-trust { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
 
+/* ── HERO CHARACTERS ── */
+@keyframes charFloat  { 0%,100%{transform:translateY(0) rotate(-3deg)} 50%{transform:translateY(-20px) rotate(3deg)} }
+@keyframes charBounce { 0%,100%{transform:translateY(0) scale(1)} 38%{transform:translateY(-24px) scale(1.07)} 58%{transform:translateY(-10px) scale(1.02)} }
+@keyframes twinkle    { 0%,100%{opacity:.45;transform:scale(1) rotate(0deg)} 50%{opacity:1;transform:scale(1.4) rotate(20deg)} }
+.hero-chars { position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+@media(max-width:900px){ .hero-chars { display:none; } }
+.hc-spark { position:absolute; color:var(--primary); font-style:normal; }
+.hc-spark-1 { top:16%; right:19%; font-size:1.3rem; animation:twinkle 2.4s ease-in-out infinite 0s; }
+.hc-spark-2 { top:31%; right:9%;  font-size:1rem;   animation:twinkle 3.2s ease-in-out infinite .6s; }
+.hc-spark-3 { top:61%; right:27%; font-size:1.1rem; animation:twinkle 2.8s ease-in-out infinite 1.1s; }
+.hc-spark-4 { top:11%; right:41%; font-size:.8rem;  animation:twinkle 3.6s ease-in-out infinite .3s; }
+.hc-spark-5 { bottom:19%; right:11%; font-size:.9rem; animation:twinkle 2.6s ease-in-out infinite .8s; }
+.hc-mascot { position:absolute; top:50%; right:10%; transform:translateY(-55%); animation:charFloat 5s ease-in-out infinite; display:flex; flex-direction:column; align-items:center; gap:8px; }
+.hc-mascot-emoji { font-size:6.5rem; line-height:1; filter:drop-shadow(0 16px 36px rgba(91,63,248,.35)); display:block; }
+.hc-mascot-shadow { width:55px; height:10px; background:radial-gradient(ellipse, rgba(91,63,248,.2), transparent 70%); border-radius:50%; }
+.hc-sec { position:absolute; filter:drop-shadow(0 6px 18px rgba(91,63,248,.2)); }
+.hc-sec-1 { font-size:2.8rem; top:19%; right:27%; animation:charBounce 4.5s ease-in-out infinite .4s; }
+.hc-sec-2 { font-size:2.2rem; bottom:24%; right:22%; animation:charFloat 6.5s ease-in-out infinite 1s; }
+.hc-sec-3 { font-size:1.9rem; top:42%; right:39%; animation:twinkle 4s ease-in-out infinite .7s; }
+.hc-bubble { position:absolute; background:var(--surface); border:1.5px solid var(--border); border-radius:14px; padding:10px 14px; box-shadow:var(--shadow-lg); display:flex; align-items:center; gap:10px; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); white-space:nowrap; }
+.hc-bubble-icon { font-size:1.4rem; }
+.hc-bubble-name { font-size:13px; font-weight:600; color:var(--text-main); line-height:1.2; }
+.hc-bubble-sub  { font-size:11px; color:var(--text-muted); }
+.hc-b1 { top:20%; right:41%; animation:charFloat 7s ease-in-out infinite 0s; }
+.hc-b2 { bottom:24%; right:5%; animation:charFloat 5.5s ease-in-out infinite 1.8s; }
+
 /* ── STATS ── */
 .stats-bar {
     background: var(--primary);
@@ -550,6 +576,35 @@ if (isset($_GET['msg'])) {
             <div class="hero-cta-row reveal delay-4">
                 <a href="auth/signUp.php" class="btn-outline">Create Free Account</a>
                 <span class="hero-trust"><i class="bi bi-shield-check" style="color:var(--success)"></i> No credit card required</span>
+            </div>
+        </div>
+    </div>
+    <!-- ✨ Floating Characters -->
+    <div class="hero-chars" aria-hidden="true">
+        <em class="hc-spark hc-spark-1">✦</em>
+        <em class="hc-spark hc-spark-2">✦</em>
+        <em class="hc-spark hc-spark-3">✦</em>
+        <em class="hc-spark hc-spark-4">★</em>
+        <em class="hc-spark hc-spark-5">✦</em>
+        <div class="hc-mascot">
+            <span class="hc-mascot-emoji">🛍️</span>
+            <div class="hc-mascot-shadow"></div>
+        </div>
+        <span class="hc-sec hc-sec-1">🌿</span>
+        <span class="hc-sec hc-sec-2">💜</span>
+        <span class="hc-sec hc-sec-3">⭐</span>
+        <div class="hc-bubble hc-b1">
+            <span class="hc-bubble-icon">🪑</span>
+            <div>
+                <div class="hc-bubble-name">Oak Chair</div>
+                <div class="hc-bubble-sub">Rp 3.200.000</div>
+            </div>
+        </div>
+        <div class="hc-bubble hc-b2">
+            <span class="hc-bubble-icon">⭐</span>
+            <div>
+                <div class="hc-bubble-name">4.9 Rating</div>
+                <div class="hc-bubble-sub">12k+ reviews</div>
             </div>
         </div>
     </div>

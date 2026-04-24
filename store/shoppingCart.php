@@ -65,7 +65,7 @@ function formatRp($n) {
 
         /* ── NAVBAR ── */
         .navbar {
-            background: var(--white);
+            background: var(--surface);
             border-bottom: 1px solid var(--border);
             padding: 0 2.5rem;
             height: 64px;
@@ -165,7 +165,7 @@ function formatRp($n) {
             width: 30px; height: 30px;
             border-radius: 50%;
             border: 2px solid var(--border);
-            background: var(--white);
+            background: var(--surface);
             display: flex; align-items: center; justify-content: center;
             font-size: 12px; font-weight: 700;
             color: var(--text-muted);
@@ -215,7 +215,7 @@ function formatRp($n) {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--white);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius) var(--radius) 0 0;
             padding: 12px 20px;
@@ -242,7 +242,7 @@ function formatRp($n) {
 
         /* ── CART ITEM CARD ── */
         .cart-list {
-            background: var(--white);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 0 0 var(--radius) var(--radius);
             overflow: hidden;
@@ -257,7 +257,7 @@ function formatRp($n) {
             position: relative;
         }
         .cart-row:last-child { border-bottom: none; }
-        .cart-row:hover { background: #FAFAFA; }
+        .cart-row:hover { background: var(--surface2); }
         .cart-row.removing {
             animation: slideOut .3s forwards;
         }
@@ -366,14 +366,14 @@ function formatRp($n) {
             transition: color .2s, background .2s;
             flex-shrink: 0;
         }
-        .btn-remove:hover { color: var(--danger); background: #FEF2F2; }
+        .btn-remove:hover { color: var(--danger); background: rgba(239,68,68,.1); }
 
         /* ── EMPTY STATE ── */
         .empty-cart {
             display: none;
             text-align: center;
             padding: 60px 20px;
-            background: var(--white);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
         }
@@ -399,7 +399,7 @@ function formatRp($n) {
 
         /* ── ORDER SUMMARY ── */
         .summary-card {
-            background: var(--white);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 28px;
@@ -456,7 +456,7 @@ function formatRp($n) {
             color: var(--text-main);
             padding-top: 14px;
             margin-top: 4px;
-            border-top: 1.5px solid var(--text-main);
+            border-top: 1.5px solid var(--border);
         }
         .summary-row.total .val { color: var(--primary); }
         .summary-row.promo-active { color: var(--success); }
@@ -515,7 +515,7 @@ function formatRp($n) {
             margin-bottom: 16px;
         }
         .suggest-card {
-            background: var(--white);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             overflow: hidden;
@@ -703,7 +703,7 @@ function formatRp($n) {
                 <?php
                 $suggestions = [
                     ['name'=>'Woven Rattan Shelf','price'=>1850000,'img'=>'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&q=80'],
-                    ['name'=>'Stone Candle Holder','price'=>290000,'img'=>'https://images.unsplash.com/photo-1603905757960-3a38abb6e3bc?w=300&q=80'],
+                    ['name'=>'Stone Candle Holder','price'=>290000,'img'=>'https://images.unsplash.com/photo-1602526429747-98c8e82e05b6?w=300&q=80'],
                     ['name'=>'Linen Throw Pillow','price'=>345000,'img'=>'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=300&q=80'],
                 ];
                 foreach ($suggestions as $s): ?>

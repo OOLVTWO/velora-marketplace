@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         /* ── NAVBAR ── */
         .navbar {
-            background: var(--white);
+            background: var(--surface);
             border-bottom: 1px solid var(--border);
             padding: 0 2rem;
             height: 64px;
@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         /* ── ORDER SUMMARY ── */
         .summary-card {
-            background: var(--white);
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 28px 28px;
@@ -247,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: var(--text-main);
             padding-top: 12px;
             margin-top: 4px;
-            border-top: 1.5px solid var(--text-main);
+            border-top: 1.5px solid var(--border);
         }
         .summary-row.total .val { color: var(--primary); }
 
@@ -314,7 +314,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .success-overlay.show { display: flex; }
         .success-box {
-            background: white;
+            background: var(--surface);
             border-radius: 20px;
             padding: 48px 40px;
             text-align: center;
@@ -328,7 +328,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .success-icon {
             width: 72px; height: 72px;
-            background: #ECFDF5;
+            background: rgba(16,185,129,0.15);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 2rem;
